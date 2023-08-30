@@ -1,4 +1,4 @@
-# My Custom Dwm Build
+# My Custom Dwm Build From https://github.com/AlphaTechnolog
 
 This is my custom dwm build which not uses dwmblocks or something similar for bar, i created a custom script approaching the status2d patch :3
 
