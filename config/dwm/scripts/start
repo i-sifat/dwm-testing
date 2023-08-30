@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Set the screen resolution to 1920x1080 using xrandr
+xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+xrandr --addmode HDMI-0 "1920x1080_60.00"
+xrandr --output HDMI-0 --mode "1920x1080_60.00"
+
+cd $(dirname $0)
+export PATH="$PWD:$PATH"
+
+launch () {
+  ${@} &
+}
+
+feh --bg-scale --recursive --randomize --slideshow-delay 60 $PWD/../wallpapers &
+
+pkill picom; picom -b
+pkill widgets; launch widgets
+
+cd $HOME
+
+if ! eww ping 2>&1 > /dev/null; then
+  eww daemon &
+fi
+
+exec dwm
+	
